@@ -19,7 +19,6 @@
 		843EC4FC2187451800C73392 /* LineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EC4DE2187451700C73392 /* LineLayer.m */; };
 		843EC4FD2187451800C73392 /* GesturePsdSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EC4E02187451700C73392 /* GesturePsdSetViewController.m */; };
 		843EC4FE2187451800C73392 /* GesturePsdCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EC4E12187451700C73392 /* GesturePsdCheckViewController.m */; };
-		843EC4FF2187451800C73392 /* AAAlertMannager.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EC4E72187451700C73392 /* AAAlertMannager.m */; };
 		843EC5002187451800C73392 /* BiometryAuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EC4E82187451700C73392 /* BiometryAuthManager.m */; };
 		843EC5012187451800C73392 /* PsdSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843EC4ED2187451700C73392 /* PsdSettingViewController.m */; };
 		843EC5022187451800C73392 /* psd_setting_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 843EC4F02187451800C73392 /* psd_setting_selected.png */; };
@@ -74,9 +73,7 @@
 		843EC4E12187451700C73392 /* GesturePsdCheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GesturePsdCheckViewController.m; sourceTree = "<group>"; };
 		843EC4E22187451700C73392 /* GesturePsdCheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GesturePsdCheckViewController.h; sourceTree = "<group>"; };
 		843EC4E32187451700C73392 /* GesturePsdSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GesturePsdSetViewController.h; sourceTree = "<group>"; };
-		843EC4E52187451700C73392 /* AAAlertMannager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAAlertMannager.h; sourceTree = "<group>"; };
 		843EC4E62187451700C73392 /* BiometryAuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiometryAuthManager.h; sourceTree = "<group>"; };
-		843EC4E72187451700C73392 /* AAAlertMannager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAAlertMannager.m; sourceTree = "<group>"; };
 		843EC4E82187451700C73392 /* BiometryAuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiometryAuthManager.m; sourceTree = "<group>"; };
 		843EC4E92187451700C73392 /* Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		843EC4EC2187451700C73392 /* PsdSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PsdSettingViewController.h; sourceTree = "<group>"; };
@@ -220,8 +217,6 @@
 		843EC4E42187451700C73392 /* Method */ = {
 			isa = PBXGroup;
 			children = (
-				843EC4E52187451700C73392 /* AAAlertMannager.h */,
-				843EC4E72187451700C73392 /* AAAlertMannager.m */,
 				843EC4E62187451700C73392 /* BiometryAuthManager.h */,
 				843EC4E82187451700C73392 /* BiometryAuthManager.m */,
 			);
@@ -408,7 +403,6 @@
 				843EC4F92187451800C73392 /* PasswordView.m in Sources */,
 				843EC5012187451800C73392 /* PsdSettingViewController.m in Sources */,
 				843EC4FE2187451800C73392 /* GesturePsdCheckViewController.m in Sources */,
-				843EC4FF2187451800C73392 /* AAAlertMannager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,14 +556,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4GL2DJWWYV;
+				DEVELOPMENT_TEAM = PSU7Q22YD5;
 				INFOPLIST_FILE = GesturePsd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.personal.GesturePsd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanxintec.TestAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -581,14 +575,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4GL2DJWWYV;
+				DEVELOPMENT_TEAM = PSU7Q22YD5;
 				INFOPLIST_FILE = GesturePsd/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.personal.GesturePsd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yanxintec.TestAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

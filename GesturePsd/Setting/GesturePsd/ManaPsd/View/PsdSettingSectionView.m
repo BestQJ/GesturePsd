@@ -9,8 +9,8 @@
 
 #import "PsdSettingSectionView.h"
 #import "BiometryAuthManager.h"
-#import "AAAlertMannager.h"
-@interface PsdSettingSectionView ()
+
+@interface PsdSettingSectionView () <JTMaterialSwitchDelegate>
 
 @property (nonatomic, strong) UILabel *titleLabel;
 
@@ -49,7 +49,6 @@
     
     self.arrowImageView.hidden = YES;
     self.switchButtoon.hidden = NO;
-    
     if (section == 0) {
         self.titleLabel.text = @"开启密码锁定";
         self.switchButtoon.tag = 100;
@@ -71,27 +70,43 @@
     }
 }
 
-
-- (void)changePsdStatu:(JTMaterialSwitch *)swicth {
-
-    if (swicth.tag == 100) {
+#pragma mark - JTMaterialSwitchDelegate
+- (void)switchStateChanged:(JTMaterialSwitchState)currentState {
+    self.switchButtoon.isOn = !self.switchButtoon.isOn;
+    NSLog(@"当前状态： %d", currentState);
+    NSLog(@"按钮tag： %ld, 按钮状态： %d", self.switchButtoon.tag, self.switchButtoon.isOn);
+    if (self.switchButtoon.tag == 100) {
         if (self.switchButtonClickBlock) {
-            [kUserDefaults setObject: swicth.isOn ? @"1" : @"0" forKey: Gesture_open_statu_key];
+            [kUserDefaults setObject: self.switchButtoon.isOn ? @"1" : @"0" forKey: Gesture_open_statu_key];
             [kUserDefaults synchronize];
-            self.switchButtonClickBlock(swicth.tag - 100);
+            if (self.switchButtonClickBlock) {
+                self.switchButtonClickBlock(self.switchButtoon.tag - 100);
+            }
         }
     }else {
-        [[BiometryAuthManager shareMannager] judgeTouchAuth:^(BOOL success, NSString * _Nonnull errorDecription) {
-            if (success) {
-                [kUserDefaults setObject: swicth.isOn ? @"0" : @"1" forKey: Touch_id_open_statu_key];
-                [kUserDefaults synchronize];
-                if (self.switchButtonClickBlock) {
-                    self.switchButtonClickBlock(swicth.tag - 100);
-                }
-            }else {
-                [AAAlertMannager showAlertWithMessage: errorDecription];
+        if (!self.switchButtoon.isOn) {
+            [kUserDefaults setObject: @"0" forKey: Touch_id_open_statu_key];
+            [kUserDefaults synchronize];
+            if (self.switchButtonClickBlock) {
+                self.switchButtonClickBlock(self.switchButtoon.tag - 100);
             }
-        }];
+        }else {
+            [[BiometryAuthManager shareMannager] judgeTouchAuth:^(BOOL success, NSString * _Nonnull errorDecription) {
+                if (success) {
+                    [kUserDefaults setObject: @"1" forKey: Touch_id_open_statu_key];
+                    [kUserDefaults synchronize];
+                    if (self.switchButtonClickBlock) {
+                        self.switchButtonClickBlock(self.switchButtoon.tag - 100);
+                    }
+                }else {
+                    [kUserDefaults setObject: @"0" forKey: Touch_id_open_statu_key];
+                    [kUserDefaults synchronize];
+                    if (self.switchButtonClickBlock) {
+                        self.switchButtonClickBlock(self.switchButtoon.tag - 100);
+                    }
+                }
+            }];
+        }
     }
 }
 
@@ -105,8 +120,8 @@
         _switchButtoon.trackOnTintColor = Main_color;
         _switchButtoon.trackOffTintColor = backGroundColor;
         _switchButtoon.rippleFillColor = Main_color;
-        [_switchButtoon addTarget: self action: @selector(changePsdStatu:) forControlEvents: UIControlEventValueChanged];
         _switchButtoon.frame = CGRectMake(ScreenWidth - 50, 7.5, 50, 40);
+        _switchButtoon.delegate = self;
     }
     return _switchButtoon;
 }

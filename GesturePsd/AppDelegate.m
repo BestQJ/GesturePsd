@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HomeViewController.h"
+#import "GesturePsdCheckViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,7 +20,11 @@
     
     self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController: [HomeViewController new]];
+    if (Gesture_open_statu || Touch_id_open_statu) {
+        self.window.rootViewController = [[GesturePsdCheckViewController alloc] init];
+    }else {
+        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController: [HomeViewController new]];
+    }
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -43,6 +48,13 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     
+}
+
+
+- (void)showRootViewController {
+    
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController: [HomeViewController new]];
+
 }
 
 @end

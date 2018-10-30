@@ -79,8 +79,12 @@
     PsdSettingSectionView *view = [[PsdSettingSectionView alloc] init];
     [view setData: section isSupportBiometry: self.isSupportBiometry];
     view.switchButtonClickBlock = ^(NSInteger index) {
-        self.isSupportGesture = Gesture_open_statu;
-        [self.mTableView reloadData];
+        if (index == 0) {
+            self.isSupportGesture = Gesture_open_statu;
+            [self.mTableView reloadData];
+        }else {
+            [self.mTableView reloadData];
+        }
     };
     if (section == 3) {
         [view addGestureRecognizer: [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(updateGesturePsd)]];
@@ -102,7 +106,12 @@
         PsdSettingSectionView *view = [[PsdSettingSectionView alloc] init];
         [view setData: section isSupportBiometry: self.isSupportBiometry];
         view.switchButtonClickBlock = ^(NSInteger index) {
-            [self.mTableView reloadData];
+            if (index == 0) {
+                self.isSupportGesture = Gesture_open_statu;
+                [self.mTableView reloadData];
+            }else {
+                [self.mTableView reloadData];
+            }
         };
         return view;
     }else if (section == 2) {

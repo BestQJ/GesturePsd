@@ -33,6 +33,7 @@
 
 
 #define kUserDefaults               [NSUserDefaults standardUserDefaults]
+#define kAppDelegate                ((AppDelegate*)[[UIApplication sharedApplication] delegate])
 
 #define Gesture_password_key        @"Gesture_password_key"
 #define Gesture_password            [kUserDefaults objectForKey: Gesture_password_key] == nil ? @[] : ((NSArray *) [kUserDefaults objectForKey: Gesture_password_key])
